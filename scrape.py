@@ -1,19 +1,20 @@
+import time
 import selenium.webdriver as webdriver
 from selenium.webdriver.chrome.service import Service
-import time
+
 
 def scrape_website(website):
     print("Launching chrome driver...")
 
-    chrome_driver_path = ""
+    chrome_driver_path = "./chromedriver"
     options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
+    driver1 = webdriver.Chrome(service=Service(chrome_driver_path), options=options)
 
     try:
-        driver.get(website)
+        driver1.get(website)
         print("Page loaded...")
-        html = driver.page_source
+        html = driver1.page_source
         time.sleep(10)
         return html
     finally:
-        driver.quit()
+        driver1.quit()
